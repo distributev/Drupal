@@ -72,28 +72,28 @@
  * @ingroup themeable
  */
 #}
+
 <article{{ attributes }}>
-
-  {{ title_prefix }}
-  {% if not page %}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
-  {% endif %}
-  {{ title_suffix }}
-
-  {% if display_submitted %}
-    <footer>
-      {{ author_picture }}
-      <div{{ author_attributes }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-        {{ metadata }}
-      </div>
-    </footer>
-  {% endif %}
-
   <div{{ content_attributes }}>
-    {{ content }}
-  </div>
+    <h2>{{ node.field_customer_name.0.value }}</h2>
 
+    <p>{{ node.field_customer_address.0.value|nl2br }}</p>
+
+    <div class="field--label-inline">
+      {{ content.field_no }}
+    </div>
+
+    <div class="field--label-inline">
+      {{ content.field_date }}
+    </div>
+
+    <table>
+      <tr>
+        <th>{{ node.field_product.fieldDefinition.label }}</th><th>{{ node.field_fees.fieldDefinition.label }}</th>
+      </tr>
+      <tr>
+        <td>{{ node.field_product.0.value }}</td><td>{{ node.field_fees.0.value }}</td>
+      </tr>
+    </table>
+  </div>
 </article>
